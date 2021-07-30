@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="program">
+  <div class="program_set">
+    <div class="program_conditions">
+      <div class="program_conditions-header">
+        <div class="conditions">Conditions</div>
+        <div class="variables">Variables</div>
+      </div>
+
+      <div class="variables-row">
+        <div class="variables-input">
+          <label class="input-label" for="input">Some conditions</label>
+          <input type="number" id="input" class="input">
+        </div>
+        <div class="button b2" id="button-16">
+          <input type="checkbox" class="checkbox">
+          <div class="knobs"></div>
+          <div class="layer"></div>
+        </div>
+      </div>
+
+      <div class="variables-row">
+        <div class="variables-input">
+          <label class="input-label" for="input">Some conditions</label>
+          <input type="number" id="input" class="input">
+        </div>
+        <div class="button b2" id="button-16">
+          <input type="checkbox" class="checkbox">
+          <div class="knobs"></div>
+          <div class="layer"></div>
+        </div>
+      </div>
+
+      <div class="variables-row">
+        <div class="variables-input">
+          <label class="input-label" for="input">Some conditions</label>
+          <input type="number" id="input" class="input">
+        </div>
+
+        <div class="button b2" id="button-16">
+          <input type="checkbox" class="checkbox">
+          <div class="knobs"></div>
+          <div class="layer"></div>
+        </div>
+
+      </div>
+
+      <div class="variables-row">
+        <div class="variables-input">
+          <label class="input-label" for="input">Some conditions</label>
+          <input type="number" id="input" class="input">
+        </div>
+
+        <div class="button b2" id="button-16">
+          <input type="checkbox" class="checkbox">
+          <div class="knobs"></div>
+          <div class="layer"></div>
+        </div>
+
+      </div>
+
+      <div class="variables-row">
+        <div class="variables-input">
+          <label class="input-label" for="input">Some conditions</label>
+          <input type="number" id="input" class="input">
+        </div>
+
+        <div class="button b2" id="button-16">
+          <input type="checkbox" class="checkbox">
+          <div class="knobs"></div>
+          <div class="layer"></div>
+        </div>
+
+      </div>
+
+      <div class="variables-row">
+        <div class="variables-input">
+          <label class="input-label" for="input">Some conditions</label>
+          <input type="number" id="input" class="input">
+        </div>
+
+        <div class="button b2" id="button-16">
+          <input type="checkbox" class="checkbox">
+          <div class="knobs"></div>
+          <div class="layer"></div>
+        </div>
+
+      </div>
+
+      <div class="variables-row">
+        <div class="variables-input">
+          <label class="input-label" for="input">Some conditions</label>
+          <input type="number" id="input" class="input">
+        </div>
+
+        <div class="button b2" id="button-16">
+          <input type="checkbox" class="checkbox">
+          <div class="knobs"></div>
+          <div class="layer"></div>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="program_timers">
+      <div class="timer_start">
+        <div class="timer_start-head">Start Timer</div><span class="est">EST.</span>
+        <div class="timer_start-inputs">
+          <!-- <input type="time" class="timer_start-input"> -->
+          <form class="form" role="form" action="{{ url_for('main.program') }}" method="post">
+            <div class="form-group">
+              {{form.launch_time(class='form-control', type='date')}}
+            </div>
+            <div class="log-btn">{{form.submit(class='btn-submit')}}</div>
+          </form>
+        </div>
+      </div>
+
+      <div class="timer_status">
+        <div class="timer_status-head">
+          Run Status
+        </div>
+        <div class="timer_status-text">
+          Running</div>
+      </div>
+
+      <div class="timer_update">
+        <div class="timer_update-head">
+          Last Update
+        </div>
+        <div class="timer_update-text">
+          9:50 PM
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="program_buttons-set">
+    <button class="program_start">Start</button>
+    <button class="program_manual">Manual Run</button>
+  </div>
+</div>
+{% endblock %}
