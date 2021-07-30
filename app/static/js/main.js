@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', (evt) => {
       const bindedInput = wrapper.previousElementSibling.querySelector('input');
 
       if (checkbox.checked){
-        bindedInput.setAttribute('disabled', true);
+        bindedInput.setAttribute('readonly', true);
       } else {
-        bindedInput.removeAttribute('disabled');
+        bindedInput.removeAttribute('readonly');
       }
     });
   })

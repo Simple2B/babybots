@@ -22,6 +22,30 @@ def create_db():
 
 
 @app.cli.command()
+def start():
+    """Start Script."""
+    from app.controllers import set_running
+    set_running()
+
+
+@app.cli.command()
+def stop():
+    """Stop Script."""
+    from app.controllers import set_down
+    set_down()
+
+
+@app.cli.command()
+def launch_script():
+    """Launch Script."""
+    from app.controllers import set_running, set_down
+    set_running()
+    # from app.controllers import launch_script
+    # launch_script(func)
+    set_down()
+
+
+@app.cli.command()
 @click.confirmation_option(prompt="Drop all database tables?")
 def drop_db():
     """Drop the current database."""
