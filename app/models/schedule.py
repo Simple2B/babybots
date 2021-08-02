@@ -9,3 +9,4 @@ class Schedule(db.Model, ModelMixin):
     id = db.Column(db.Integer, primary_key=True)
     launch_time = db.Column(TIME, nullable=True)
     launch_status = db.Column(db.Boolean, nullable=False, default=False)
+    last_update = db.Column(TIME, nullable=True)

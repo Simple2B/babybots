@@ -3,6 +3,7 @@ from flask_login import login_required
 
 from app.forms import ScheduleForm
 from app.models import Schedule, Input
+from app.controllers import get_last_update
 
 
 main_blueprint = Blueprint("main", __name__)
@@ -15,14 +16,15 @@ def program():
     schedule = Schedule.query.all()[0]
     db_launch_time = schedule.launch_time
     status = schedule.launch_status
-    input1 = Input.query.filter(Input.input_name == 'value1').first()
-    input2 = Input.query.filter(Input.input_name == 'value2').first()
-    input3 = Input.query.filter(Input.input_name == 'value3').first()
-    input4 = Input.query.filter(Input.input_name == 'value4').first()
-    input5 = Input.query.filter(Input.input_name == 'value5').first()
-    input6 = Input.query.filter(Input.input_name == 'value6').first()
-    input7 = Input.query.filter(Input.input_name == 'value7').first()
-    input8 = Input.query.filter(Input.input_name == 'value8').first()
+    last_update = get_last_update()
+    input1 = Input.query.filter(Input.input_name == "value1").first()
+    input2 = Input.query.filter(Input.input_name == "value2").first()
+    input3 = Input.query.filter(Input.input_name == "value3").first()
+    input4 = Input.query.filter(Input.input_name == "value4").first()
+    input5 = Input.query.filter(Input.input_name == "value5").first()
+    input6 = Input.query.filter(Input.input_name == "value6").first()
+    input7 = Input.query.filter(Input.input_name == "value7").first()
+    input8 = Input.query.filter(Input.input_name == "value8").first()
     if request.method == "GET":
         if db_launch_time:
             form.launch_time.data = db_launch_time
@@ -69,6 +71,10 @@ def program():
         input6.save()
         input7.save()
         input8.save()
-        flash('Timer has been set', 'success')
-        return render_template("program.html", form=form, status=status)
-    return render_template("program.html", form=form, status=status)
+        flash("Timer has been set", "success")
+        return render_template(
+            "program.html", form=form, status=status, last_update=last_update
+        )
+    return render_template(
+        "program.html", form=form, status=status, last_update=last_update
+    )

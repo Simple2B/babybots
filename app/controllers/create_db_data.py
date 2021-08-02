@@ -2,6 +2,7 @@ from app.models import User, Schedule, Input
 
 
 def create_db_data():
+    """Fill default data in data base"""
     User(username='admin', email='admin@gmail.com', password='admin').save()
     Schedule().save()
     for i in range(1, 9):

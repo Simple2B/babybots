@@ -163,11 +163,11 @@ body {
 }
 
 .program {
-    width: 1000px;
+    width: 950px;
     margin: 25px auto;
     border-radius: 5px;
     border: 1px solid rgba(0,0,0,.125);
-    padding: 30px 80px;
+    padding: 30px 90px;
 }
 
 .program_set {
@@ -276,7 +276,7 @@ body {
 
 .program_buttons-set {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 80px;
 }
 

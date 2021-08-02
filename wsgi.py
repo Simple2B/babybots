@@ -38,11 +38,8 @@ def stop():
 @app.cli.command()
 def launch_script():
     """Launch Script."""
-    from app.controllers import set_running, set_down
-    set_running()
-    # from app.controllers import launch_script
-    # launch_script(func)
-    set_down()
+    # from app.controllers import main
+    # main(func)
 
 
 @app.cli.command()
