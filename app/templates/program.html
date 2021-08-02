@@ -3,6 +3,8 @@
 {% block content %}
 
 <div class="program">
+  <form class="form" role="form" action="{{ url_for('main.program') }}" method="post">
+    {{form.hidden_tag()}}
   <div class="program_set">
     <div class="program_conditions">
       <div class="program_conditions-header">
@@ -13,10 +15,14 @@
       <div class="variables-row">
         <div class="variables-input">
           <label class="input-label" for="input">Some conditions</label>
-          <input type="number" id="input" class="input">
+          {% if form.checkbox1.data %}
+          {{form.value1(class='input', type='number', readonly=True)}}
+          {% else %}
+          {{form.value1(class='input', type='number')}}
+          {% endif %}
         </div>
         <div class="button b2" id="button-16">
-          <input type="checkbox" class="checkbox">
+          {{form.checkbox1(class='checkbox', type='checkbox')}}
           <div class="knobs"></div>
           <div class="layer"></div>
         </div>
@@ -25,10 +31,14 @@
       <div class="variables-row">
         <div class="variables-input">
           <label class="input-label" for="input">Some conditions</label>
-          <input type="number" id="input" class="input">
+          {% if form.checkbox2.data %}
+          {{form.value2(class='input', type='number', readonly=True)}}
+          {% else %}
+          {{form.value2(class='input', type='number')}}
+          {% endif %}
         </div>
         <div class="button b2" id="button-16">
-          <input type="checkbox" class="checkbox">
+          {{form.checkbox2(class='checkbox', type='checkbox')}}
           <div class="knobs"></div>
           <div class="layer"></div>
         </div>
@@ -37,39 +47,15 @@
       <div class="variables-row">
         <div class="variables-input">
           <label class="input-label" for="input">Some conditions</label>
-          <input type="number" id="input" class="input">
+          {% if form.checkbox3.data %}
+          {{form.value3(class='input', type='number', readonly=True)}}
+          {% else %}
+          {{form.value3(class='input', type='number')}}
+          {% endif %}
         </div>
 
         <div class="button b2" id="button-16">
-          <input type="checkbox" class="checkbox">
-          <div class="knobs"></div>
-          <div class="layer"></div>
-        </div>
-
-      </div>
-
-      <div class="variables-row">
-        <div class="variables-input">
-          <label class="input-label" for="input">Some conditions</label>
-          <input type="number" id="input" class="input">
-        </div>
-
-        <div class="button b2" id="button-16">
-          <input type="checkbox" class="checkbox">
-          <div class="knobs"></div>
-          <div class="layer"></div>
-        </div>
-
-      </div>
-
-      <div class="variables-row">
-        <div class="variables-input">
-          <label class="input-label" for="input">Some conditions</label>
-          <input type="number" id="input" class="input">
-        </div>
-
-        <div class="button b2" id="button-16">
-          <input type="checkbox" class="checkbox">
+          {{form.checkbox3(class='checkbox', type='checkbox')}}
           <div class="knobs"></div>
           <div class="layer"></div>
         </div>
@@ -79,11 +65,15 @@
       <div class="variables-row">
         <div class="variables-input">
           <label class="input-label" for="input">Some conditions</label>
-          <input type="number" id="input" class="input">
+          {% if form.checkbox4.data %}
+          {{form.value4(class='input', type='number', readonly=True)}}
+          {% else %}
+          {{form.value4(class='input', type='number')}}
+          {% endif %}
         </div>
 
         <div class="button b2" id="button-16">
-          <input type="checkbox" class="checkbox">
+          {{form.checkbox4(class='checkbox', type='checkbox')}}
           <div class="knobs"></div>
           <div class="layer"></div>
         </div>
@@ -93,11 +83,69 @@
       <div class="variables-row">
         <div class="variables-input">
           <label class="input-label" for="input">Some conditions</label>
-          <input type="number" id="input" class="input">
+          {% if form.checkbox5.data %}
+          {{form.value5(class='input', type='number', readonly=True)}}
+          {% else %}
+          {{form.value5(class='input', type='number')}}
+          {% endif %}
         </div>
 
         <div class="button b2" id="button-16">
-          <input type="checkbox" class="checkbox">
+          {{form.checkbox5(class='checkbox', type='checkbox')}}
+          <div class="knobs"></div>
+          <div class="layer"></div>
+        </div>
+
+      </div>
+
+      <div class="variables-row">
+        <div class="variables-input">
+          <label class="input-label" for="input">Some conditions</label>
+          {% if form.checkbox6.data %}
+          {{form.value6(class='input', type='number', readonly=True)}}
+          {% else %}
+          {{form.value6(class='input', type='number')}}
+          {% endif %}
+        </div>
+
+        <div class="button b2" id="button-16">
+          {{form.checkbox6(class='checkbox', type='checkbox')}}
+          <div class="knobs"></div>
+          <div class="layer"></div>
+        </div>
+
+      </div>
+
+      <div class="variables-row">
+        <div class="variables-input">
+          <label class="input-label" for="input">Some conditions</label>
+          {% if form.checkbox7.data %}
+          {{form.value7(class='input', type='number', readonly=True)}}
+          {% else %}
+          {{form.value7(class='input', type='number')}}
+          {% endif %}
+        </div>
+
+        <div class="button b2" id="button-16">
+          {{form.checkbox7(class='checkbox', type='checkbox')}}
+          <div class="knobs"></div>
+          <div class="layer"></div>
+        </div>
+
+      </div>
+
+      <div class="variables-row">
+        <div class="variables-input">
+          <label class="input-label" for="input">Some conditions</label>
+          {% if form.checkbox8.data %}
+          {{form.value8(class='input', type='number', readonly=True)}}
+          {% else %}
+          {{form.value8(class='input', type='number')}}
+          {% endif %}
+        </div>
+
+        <div class="button b2" id="button-16">
+          {{form.checkbox8(class='checkbox', type='checkbox')}}
           <div class="knobs"></div>
           <div class="layer"></div>
         </div>
@@ -107,15 +155,13 @@
     </div>
     <div class="program_timers">
       <div class="timer_start">
-        <div class="timer_start-head">Start Timer</div><span class="est">EST.</span>
+        <div class="timer_start-head">Start Timer</div>
         <div class="timer_start-inputs">
-          <!-- <input type="time" class="timer_start-input"> -->
-          <form class="form" role="form" action="{{ url_for('main.program') }}" method="post">
+
             <div class="form-group">
-              {{form.launch_time(class='form-control', type='date')}}
+              {{form.launch_time(class='form-control', type='time')}}
             </div>
-            <div class="log-btn">{{form.submit(class='btn-submit')}}</div>
-          </form>
+
         </div>
       </div>
 
@@ -124,7 +170,12 @@
           Run Status
         </div>
         <div class="timer_status-text">
-          Running</div>
+          {% if status == True %}
+          Running
+          {% else %}
+          Down
+          {% endif %}
+          </div>
       </div>
 
       <div class="timer_update">
@@ -139,8 +190,9 @@
   </div>
 
   <div class="program_buttons-set">
-    <button class="program_start">Start</button>
+    <div>{{form.submit(class='program_start')}}</div>
     <button class="program_manual">Manual Run</button>
   </div>
+</form>
 </div>
 {% endblock %}
