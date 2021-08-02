@@ -164,10 +164,10 @@ body {
 
 .program {
     width: 1000px;
-    margin: 30px auto;
+    margin: 25px auto;
     border-radius: 5px;
     border: 1px solid rgba(0,0,0,.125);
-    padding: 30px 45px;
+    padding: 30px 80px;
 }
 
 .program_set {
