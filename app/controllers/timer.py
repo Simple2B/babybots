@@ -58,4 +58,4 @@ def get_last_update():
         log(log.WARNING, 'No last update in data base')
         return 'Undefined'
     log(log.INFO, 'Get last update from data base')
-    return schedule.last_update
+    return schedule.last_update.strftime('%H:%M:%S')

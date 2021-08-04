@@ -104,6 +104,7 @@ def timer_start():
 
 
 def manual_start():
+    flash("Manual Start", "success")
     form = ScheduleForm()
     schedule = Schedule.query.first()
     status = schedule.launch_status
@@ -140,7 +141,6 @@ def manual_start():
     input6.save()
     input7.save()
     input8.save()
-    flash("Manual Start", "success")
     launch_script(test_client_func)
     return render_template(
         "program.html", form=form, status=status, last_update=last_update
@@ -150,7 +150,7 @@ def manual_start():
 def test_client_func(*args):
     log(log.INFO, "Client func start")
     log(log.INFO, "Args: %s", args)
-    # time.sleep(5)
+    time.sleep(5)
 
 
 @main_blueprint.route("/get_status", methods=["GET"])

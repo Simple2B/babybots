@@ -260,6 +260,7 @@ body {
     text-align: center;
     font-size: 30px;
     line-height: 50px;
+    position: relative;
 }
 
 .timer_update-head {
@@ -622,4 +623,21 @@ a {
     cursor: pointer;
     background: transparent;
     border: 0;
+  }
+
+  .loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #ddd90b;
+    border-radius: 50%;
+    position: absolute;
+    top: 21%;
+    left: 39%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
