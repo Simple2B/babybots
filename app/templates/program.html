@@ -169,12 +169,13 @@
         <div class="timer_status-head">
           Run Status
         </div>
-        <div class="timer_status-text">
-          {% if status == True %}
+        <div action="{{ url_for('main.get_status') }}" class="timer_status-text">
+
+          <!-- {% if status == True %}
           Running
           {% else %}
           Down
-          {% endif %}
+          {% endif %} -->
           </div>
       </div>
 
@@ -191,7 +192,9 @@
 
   <div class="program_buttons-set">
     <div>{{form.submit(class='program_start')}}</div>
+    <div>{{form.submit_manual(class='program_start')}}</div>
   </div>
+
 </form>
 </div>
 {% endblock %}

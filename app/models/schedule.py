@@ -8,5 +8,6 @@ class Schedule(db.Model, ModelMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     launch_time = db.Column(TIME, nullable=True)
-    launch_status = db.Column(db.Boolean, nullable=False, default=False)
+    launch_status = db.Column(db.Boolean, default=False)
     last_update = db.Column(TIME, nullable=True)
+    manual_start = db.Column(db.Boolean, default=False)

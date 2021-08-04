@@ -276,7 +276,7 @@ body {
 
 .program_buttons-set {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 80px;
 }
 

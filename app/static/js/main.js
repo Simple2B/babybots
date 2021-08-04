@@ -15,3 +15,11 @@ document.addEventListener('DOMContentLoaded', (evt) => {
     });
   })
 });
+
+
+function reloadStatus() {
+  const response = await fetch('/get_status')
+
+  return response.json()
+  .then(data => console.log(data))
+}
