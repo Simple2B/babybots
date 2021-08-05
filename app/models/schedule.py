@@ -1,6 +1,7 @@
-from sqlalchemy.dialects.mysql import TIME
 from app import db
 from app.models.utils import ModelMixin
+
+TIME = db.Integer  # value: hours * 60 + minutes
 
 
 class Schedule(db.Model, ModelMixin):
@@ -8,5 +9,6 @@ class Schedule(db.Model, ModelMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     launch_time = db.Column(TIME, nullable=True)
-    launch_status = db.Column(db.Boolean, default=False)
-    last_update = db.Column(TIME, nullable=True)
+    is_run = db.Column(db.Boolean, default=False)
+    last_update = db.Column(db.DateTime, nullable=True)
+    is_run_now = db.Column(db.Boolean, default=False)

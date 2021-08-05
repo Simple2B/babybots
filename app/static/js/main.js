@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', (evt) => {
     const divStatus = document.querySelector('.timer_status-text')
 
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     if (data) {
       return divStatus.innerText = 'Running'

@@ -38,8 +38,9 @@ def stop():
 @app.cli.command()
 def launch_script():
     """Launch Script."""
-    # from app.controllers import main
-    # main(func)
+    from app.controllers import main
+    from app.controllers.call_client_method import client_func
+    main(client_func)
 
 
 @app.cli.command()

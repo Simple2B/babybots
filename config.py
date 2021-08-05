@@ -14,6 +14,10 @@ class BaseConfig(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     WTF_CSRF_ENABLED = False
 
+    ADMIN_USER_NAME = os.environ.get("ADMIN_USER_NAME", "admin")
+    ADMIN_USER_EMAIL = os.environ.get("ADMIN_USER_EMAIL", "admin@admin.com")
+    ADMIN_USER_PASS = os.environ.get("ADMIN_USER_PASS", "admin")
+
     @staticmethod
     def configure(app):
         # Implement this method to do further configuration on your app.
