@@ -15,4 +15,3 @@ python-dotenv
 SQLAlchemy
 Werkzeug
 WTForms
-psycopg2
