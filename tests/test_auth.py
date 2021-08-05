@@ -1,6 +1,7 @@
 import pytest
 
 from app import db, create_app
+from app.controllers.create_db_data import create_db_data
 from tests.utils import register, login, logout
 
 
@@ -14,6 +15,7 @@ def client():
         app_ctx.push()
         db.drop_all()
         db.create_all()
+        create_db_data()
         yield client
         db.session.remove()
         db.drop_all()

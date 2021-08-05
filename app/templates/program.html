@@ -14,7 +14,7 @@
 
       <div class="variables-row">
         <div class="variables-input">
-          <label class="input-label" for="input">Some conditions</label>
+          <label class="input-label" for="input">Value 1</label>
           {% if form.checkbox1.data %}
           {{form.value1(class='input', type='number', readonly=True)}}
           {% else %}
@@ -30,7 +30,7 @@
 
       <div class="variables-row">
         <div class="variables-input">
-          <label class="input-label" for="input">Some conditions</label>
+          <label class="input-label" for="input">Value 2</label>
           {% if form.checkbox2.data %}
           {{form.value2(class='input', type='number', readonly=True)}}
           {% else %}
@@ -46,7 +46,7 @@
 
       <div class="variables-row">
         <div class="variables-input">
-          <label class="input-label" for="input">Some conditions</label>
+          <label class="input-label" for="input">Value 3</label>
           {% if form.checkbox3.data %}
           {{form.value3(class='input', type='number', readonly=True)}}
           {% else %}
@@ -64,7 +64,7 @@
 
       <div class="variables-row">
         <div class="variables-input">
-          <label class="input-label" for="input">Some conditions</label>
+          <label class="input-label" for="input">Value 4</label>
           {% if form.checkbox4.data %}
           {{form.value4(class='input', type='number', readonly=True)}}
           {% else %}
@@ -82,7 +82,7 @@
 
       <div class="variables-row">
         <div class="variables-input">
-          <label class="input-label" for="input">Some conditions</label>
+          <label class="input-label" for="input">Value 5</label>
           {% if form.checkbox5.data %}
           {{form.value5(class='input', type='number', readonly=True)}}
           {% else %}
@@ -100,7 +100,7 @@
 
       <div class="variables-row">
         <div class="variables-input">
-          <label class="input-label" for="input">Some conditions</label>
+          <label class="input-label" for="input">Value 6</label>
           {% if form.checkbox6.data %}
           {{form.value6(class='input', type='number', readonly=True)}}
           {% else %}
@@ -118,7 +118,7 @@
 
       <div class="variables-row">
         <div class="variables-input">
-          <label class="input-label" for="input">Some conditions</label>
+          <label class="input-label" for="input">Value 7</label>
           {% if form.checkbox7.data %}
           {{form.value7(class='input', type='number', readonly=True)}}
           {% else %}
@@ -136,7 +136,7 @@
 
       <div class="variables-row">
         <div class="variables-input">
-          <label class="input-label" for="input">Some conditions</label>
+          <label class="input-label" for="input">Value 8</label>
           {% if form.checkbox8.data %}
           {{form.value8(class='input', type='number', readonly=True)}}
           {% else %}
@@ -169,13 +169,9 @@
         <div class="timer_status-head">
           Run Status
         </div>
-        <div class="timer_status-text">
-          {% if status == True %}
-          Running
-          {% else %}
-          Down
-          {% endif %}
-          </div>
+        <div action="{{ url_for('main.get_status') }}" class="timer_status-text">
+          <div class="loader"></div>
+        </div>
       </div>
 
       <div class="timer_update">
@@ -183,7 +179,7 @@
           Last Update
         </div>
         <div class="timer_update-text">
-          9:50 PM
+          {{last_update}}
         </div>
       </div>
     </div>
@@ -191,8 +187,9 @@
 
   <div class="program_buttons-set">
     <div>{{form.submit(class='program_start')}}</div>
-    <button class="program_manual">Manual Run</button>
+    <div>{{form.submit_manual(class='program_start')}}</div>
   </div>
+
 </form>
 </div>
 {% endblock %}

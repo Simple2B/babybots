@@ -14,4 +14,20 @@ document.addEventListener('DOMContentLoaded', (evt) => {
       }
     });
   })
+
+  async function reloadStatus() {
+    const response = await fetch('/get_status')
+    const divStatus = document.querySelector('.timer_status-text')
+
+    const data = await response.json();
+    // console.log(data);
+
+    if (data) {
+      return divStatus.innerText = 'Running'
+    } else {
+      return divStatus.innerText = 'Down'
+    }
+  }
+
+  setInterval(reloadStatus, 3000);
 });

@@ -40,3 +40,4 @@ class ScheduleForm(FlaskForm):
     checkbox7 = BooleanField()
     checkbox8 = BooleanField()
     submit = SubmitField("Start timer")
+    submit_manual = SubmitField("Manual start")

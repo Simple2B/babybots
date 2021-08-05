@@ -1,8 +1,14 @@
 from app.models import User, Schedule, Input
+from config import BaseConfig as conf
 
 
 def create_db_data():
-    User(username='admin', email='admin@gmail.com', password='admin').save()
+    """Fill default data in data base"""
+    User(
+        username=conf.ADMIN_USER_NAME,
+        email=conf.ADMIN_USER_EMAIL,
+        password=conf.ADMIN_USER_PASS,
+    ).save()
     Schedule().save()
     for i in range(1, 9):
-        Input(input_name=f"value{i}").save()
+        Input(name=f"value{i}").save()

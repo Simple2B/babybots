@@ -3,6 +3,7 @@ from flask_login import login_user, logout_user, login_required
 
 from app.models import User
 from app.forms import LoginForm, RegistrationForm
+from app.logger import log
 
 auth_blueprint = Blueprint("auth", __name__)
 
@@ -27,6 +28,7 @@ def register():
 
 @auth_blueprint.route("/login", methods=["GET", "POST"])
 def login():
+    log(log.INFO, "login")
     form = LoginForm(request.form)
     if form.validate_on_submit():
         user = User.authenticate(form.user_id.data, form.password.data)
@@ -34,7 +36,13 @@ def login():
             login_user(user)
             flash("Login successful.", "success")
             return redirect(url_for("main.program"))
+
+        log(log.WARNING, "Wrong user ID or password")
         flash("Wrong user ID or password.", "danger")
+    elif form.is_submitted():
+        flash("Validation not pass")
+        log(log.ERROR, "%s", form.errors)
+
     return render_template("auth/login.html", form=form)
 
 
