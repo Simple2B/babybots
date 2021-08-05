@@ -29,7 +29,9 @@ def main(func):
     db_launch_time = schedule.launch_time
     now = datetime.now().time()
     if schedule.is_run_now or (
-        (db_launch_time // 60) == now.hour and (db_launch_time % 60) == now.minute
+        db_launch_time
+        and (db_launch_time // 60) == now.hour
+        and (db_launch_time % 60) == now.minute
     ):
         log(log.INFO, "Script starts")
         launch_script(func)
