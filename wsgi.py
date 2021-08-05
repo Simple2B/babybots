@@ -40,6 +40,8 @@ def launch_script():
     """Launch Script."""
     from app.controllers import main
     from app.controllers.call_client_method import client_func
+    from app.logger import log
+    log(log.INFO, "launch_script")
     main(client_func)
 
 
