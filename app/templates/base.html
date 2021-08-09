@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Babybots App</title>
+  <title>{{config.APP_NAME}}</title>
   <!-- meta -->
   <meta name="description" content="">
   <meta name="author" content="">
@@ -25,7 +25,7 @@
     <nav class="navbar">
       <div class="container-header">
         <!-- Navbar Brand -->
-        <a class="navbar-brand" href="{{ url_for('main.program') }}">Babybots App</a>
+        <a class="navbar-brand" href="{{ url_for('main.program') }}">{{config.APP_NAME}}</a>
 
           <!-- Login/Logout -->
           <ul class="navbar-nav ml-auto">
