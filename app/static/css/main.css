@@ -184,6 +184,12 @@ body {
     margin-bottom: 25px;
 }
 
+.variables-input {
+    width: 365px;
+    display: flex;
+    justify-content: space-between;
+}
+
 .variables-row:last-child {
     margin-bottom: 0;
 }
