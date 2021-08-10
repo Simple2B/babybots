@@ -30,6 +30,8 @@ def program():
     input6 = Input.query.filter(Input.name == "value6").first()
     input7 = Input.query.filter(Input.name == "value7").first()
     input8 = Input.query.filter(Input.name == "value8").first()
+    input9 = Input.query.filter(Input.name == "value9").first()
+    input10 = Input.query.filter(Input.name == "value10").first()
     if request.method == "GET":
         if db_launch_time:
             form.launch_time.data = time(
@@ -51,6 +53,10 @@ def program():
         form.checkbox7.data = input7.is_locked
         form.value8.data = input8.value
         form.checkbox8.data = input8.is_locked
+        form.value9.data = input9.value
+        form.checkbox9.data = input9.is_locked
+        form.value10.data = input10.value
+        form.checkbox10.data = input10.is_locked
     if form.validate_on_submit():
         if form.submit_manual.data:
             manual_start(form)
@@ -73,6 +79,8 @@ def timer_start(form: ScheduleForm):
     input6 = Input.query.filter(Input.name == "value6").first()
     input7 = Input.query.filter(Input.name == "value7").first()
     input8 = Input.query.filter(Input.name == "value8").first()
+    input9 = Input.query.filter(Input.name == "value9").first()
+    input10 = Input.query.filter(Input.name == "value10").first()
     input1.value = form.value1.data
     input1.is_locked = form.checkbox1.data
     input2.value = form.value2.data
@@ -89,6 +97,10 @@ def timer_start(form: ScheduleForm):
     input7.is_locked = form.checkbox7.data
     input8.value = form.value8.data
     input8.is_locked = form.checkbox8.data
+    input9.value = form.value9.data
+    input9.is_locked = form.checkbox9.data
+    input10.value = form.value10.data
+    input10.is_locked = form.checkbox10.data
     schedule.launch_time = (
         form.launch_time.data.minute + form.launch_time.data.hour * 60
     )
@@ -101,6 +113,8 @@ def timer_start(form: ScheduleForm):
     input6.save()
     input7.save()
     input8.save()
+    input9.save()
+    input10.save()
     flash("Timer has been set", "success")
     log(log.INFO, "Before launching script")
 
@@ -115,6 +129,8 @@ def manual_start(form: ScheduleForm):
     input6 = Input.query.filter(Input.name == "value6").first()
     input7 = Input.query.filter(Input.name == "value7").first()
     input8 = Input.query.filter(Input.name == "value8").first()
+    input9 = Input.query.filter(Input.name == "value9").first()
+    input10 = Input.query.filter(Input.name == "value10").first()
     input1.value = form.value1.data
     input1.is_locked = form.checkbox1.data
     input2.value = form.value2.data
@@ -131,6 +147,10 @@ def manual_start(form: ScheduleForm):
     input7.is_locked = form.checkbox7.data
     input8.value = form.value8.data
     input8.is_locked = form.checkbox8.data
+    input9.value = form.value9.data
+    input9.is_locked = form.checkbox9.data
+    input10.value = form.value10.data
+    input10.is_locked = form.checkbox10.data
     input1.save()
     input2.save()
     input3.save()
@@ -139,6 +159,8 @@ def manual_start(form: ScheduleForm):
     input6.save()
     input7.save()
     input8.save()
+    input9.save()
+    input10.save()
     schedule = Schedule.query.first()
     schedule.is_run_now = True
     schedule.save()

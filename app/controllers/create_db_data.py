@@ -10,5 +10,5 @@ def create_db_data():
         password=conf.ADMIN_USER_PASS,
     ).save()
     Schedule().save()
-    for i in range(1, 9):
+    for i in range(1, 11):
         Input(name=f"value{i}").save()

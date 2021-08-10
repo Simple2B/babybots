@@ -36,6 +36,8 @@ def main(func):
         log(log.INFO, "Script starts")
         launch_script(func)
         log(log.INFO, "Script stops")
+    else:
+        log(log.WARNING, "NOT RUN")
 
 
 def launch_script(func):
