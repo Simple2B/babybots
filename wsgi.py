@@ -52,5 +52,26 @@ def drop_db():
     db.drop_all()
 
 
+@app.cli.command()
+def status():
+    """Print current status."""
+    from app.models import Schedule
+    schedule = Schedule.query.first()
+    if schedule.is_run is True:
+        print("Running")
+    if schedule.is_run is False:
+        print("Down")
+
+
+@app.cli.command()
+def reset_status():
+    """Reset current status."""
+    from app.models import Schedule
+    schedule = Schedule.query.first()
+    schedule.is_run = False
+    schedule.is_run_now = False
+    schedule.save()
+
+
 if __name__ == "__main__":
     app.run()
