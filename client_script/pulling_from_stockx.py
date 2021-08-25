@@ -577,6 +577,7 @@ def send_to_shopify():
                 else:
                     exceeded_variants(sku.split("/")[0])
                     over_32_variants.append(sku.split("/")[0])
+        return
 
 
 def condition_pricing(
