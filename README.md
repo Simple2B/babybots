@@ -1,5 +1,29 @@
 # Instruction for deploy application
 
+## How to push and update on AWS
+
+1. Make some changes and push them to github
+2. Go to AWS by ssh
+
+```ssh
+ssh -i <<path to babybots.cer>> ec2-user@ec2-34-229-136-66.compute-1.amazonaws.com
+```
+
+3. Go to project folder
+
+```bash
+cd babybots
+```
+
+4. Run next commands:
+
+```bash
+git fetch
+git pull
+```
+
+> **_NOTE:_** Make sure that the branch you push to is the same that you pull from.
+
 All script run logs will be in files:
 
 - run-script.out
