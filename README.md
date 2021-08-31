@@ -59,7 +59,7 @@ pip install -r requirements.txt
 
 ## Create .env file
 
-In the project folder need create file *.env* with next context:
+In the project folder need create file _.env_ with next context:
 
 ```dotenv
 SECRET_KEY=<<secret-key-string>>
@@ -68,7 +68,7 @@ ADMIN_USER_NAME=admin
 ADMIN_USER_PASS=1234
 ```
 
-> **_NOTE:_**  Please put here default admin credentials.
+> **_NOTE:_** Please put here default admin credentials. Also you need to choose SECRET_KEY.
 
 ## Prepare database
 
