@@ -530,7 +530,6 @@ def updating_everything():  # Creating new dictionaries based on information in 
 
 def send_to_shopify():
     global inventory_by_id_dict
-
     for key, value in final_dict.items():
         products_updated = key
         title = value[0][0]
@@ -575,7 +574,6 @@ def send_to_shopify():
                 if sku.split("/")[0] in over_32_variants:
                     pass
                 else:
-                    exceeded_variants(sku.split("/")[0])
                     over_32_variants.append(sku.split("/")[0])
 
 
@@ -648,47 +646,13 @@ def condition_pricing(
         return price
 
 
-def email_notification(mes):
-    user = "stockxuploader@gmail.com"
-
-    password = "stockxuploading"
-
-    receiver1 = "Coryshreffler31@Yahoo.com"  # Change
-    # receiver1 = "Swishdurham@gmail.com"
-
-    # receiver2 = 'coryshreffler@baby-bots.com'  # Change
-
-    message = mes
-
-    mail = smtplib.SMTP("smtp.gmail.com", 587)
-
-    mail.ehlo()
-
-    mail.starttls()
-
-    mail.login(user, password)
-
-    mail.sendmail("fromemail", receiver1, message)
-    #  mail.sendmail('fromemail', receiver2, message)
-
-    mail.close()
-
-
-def exceeded_variants(sku):
-    email_notification(
-        "SKU "
-        + sku
-        + " has exceeded 32 variants. Only 32 were uploaded. Contact Babybots to add more variants"
-    )
-
-
 def all():
     global user_agent
-    run_counter = 0
+    run_counter = 1
     run_successful = False
 
     while run_successful == False:
-        if run_counter <= 10:
+        if run_counter == 1:
             try:
                 initiate_check()
                 breaking_sku_down()
@@ -697,17 +661,33 @@ def all():
                 loop_through_base_product_link()
                 updating_everything()
                 send_to_shopify()
-                print(" ")
-                print("updated")
+                print(' ')
+                print('updated')
                 run_successful = True
                 return run_successful
             except Exception as e:
-                time.sleep(1800)
+                print(e)
+                time.sleep(10)
                 run_counter += 1
                 user_agent = random.choice(user_agent_master_list)
                 print("Fail number: ", str(run_counter))
-                print("new useragent: ", user_agent)
-
+                print('new useragent: ', user_agent)
+        elif run_counter >1 and run_counter <= 10:
+            try:
+                loop_through_base_product_link()
+                updating_everything()
+                send_to_shopify()
+                print(' ')
+                print('updated')
+                run_successful = True
+                return run_successful
+            except Exception as e:
+                print(e)
+                time.sleep(10)
+                run_counter += 1
+                user_agent = random.choice(user_agent_master_list)
+                print("Fail number: ", str(run_counter))
+                print('new useragent: ', user_agent)
 
 if __name__ == "__main__":
     all()
