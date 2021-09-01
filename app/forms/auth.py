@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, ValidationError
+from wtforms import StringField, PasswordField, SubmitField, ValidationError, HiddenField
 from wtforms.validators import DataRequired, Email, Length, EqualTo
 
 from app.models import User
@@ -8,6 +8,7 @@ from app.models import User
 class LoginForm(FlaskForm):
     user_id = StringField('Username', [DataRequired()])
     password = PasswordField('Password', [DataRequired()])
+    current_time = HiddenField('Сurrent_time')
     submit = SubmitField('Login')
 
 

@@ -1,6 +1,6 @@
 from datetime import time
 from flask import render_template, Blueprint, request, flash, jsonify
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from app.forms import ScheduleForm
 from app.models import Schedule, Input
@@ -19,7 +19,7 @@ def program():
     if not schedule:
         schedule = Schedule()
         schedule.save()
-    db_launch_time = schedule.launch_time
+    db_launch_time = schedule.launch_time + current_user.delta_time_hours * 60
     status = schedule.is_run
     last_update = get_last_update()
     input1 = Input.query.filter(Input.name == "value1").first()
@@ -102,7 +102,7 @@ def timer_start(form: ScheduleForm):
     input10.value = form.value10.data
     input10.is_locked = form.checkbox10.data
     schedule.launch_time = (
-        form.launch_time.data.minute + form.launch_time.data.hour * 60
+        form.launch_time.data.minute + (form.launch_time.data.hour - current_user.delta_time_hours) * 60
     )
     schedule.save()
     input1.save()
