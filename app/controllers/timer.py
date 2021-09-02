@@ -71,8 +71,4 @@ def get_last_update() -> str:
     log(log.INFO, "Get last update from data base")
     last_update_hours = schedule.last_update // 60
     last_update_minutes = schedule.last_update % 60
-    if len(str(last_update_minutes)) == 1:
-        last_update_minutes = '0' + str(last_update_minutes)
-    else:
-        last_update_minutes = str(last_update_minutes)
-    return str(last_update_hours) + ':' + last_update_minutes
+    return f"{last_update_hours:02}:{last_update_minutes:02}"
