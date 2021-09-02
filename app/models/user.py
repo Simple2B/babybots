@@ -19,6 +19,7 @@ class User(db.Model, UserMixin, ModelMixin):
     password_hash = db.Column(db.String(255), nullable=False)
     activated = db.Column(db.Boolean, default=True)
     created_at = db.Column(db.DateTime, default=datetime.now)
+    delta_time_hours = db.Column(db.Integer, default=0)
 
     @hybrid_property
     def password(self):

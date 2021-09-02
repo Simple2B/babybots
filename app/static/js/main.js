@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', (evt) => {
       const wrapper = checkbox.parentNode;
       const bindedInput = wrapper.previousElementSibling.querySelector('input');
 
-      if (checkbox.checked){
+      if (checkbox.checked) {
         bindedInput.setAttribute('readonly', true);
       } else {
         bindedInput.removeAttribute('readonly');
@@ -30,4 +30,16 @@ document.addEventListener('DOMContentLoaded', (evt) => {
   }
 
   setInterval(reloadStatus, 3000);
+
+
+  function sendTimeToServer() {
+    const time = new Date();
+    const hours = time.getHours();
+    console.log(hours)
+    const hiddenTagValue = document.getElementById('hidden_tag').value = hours;
+    console.log(hiddenTagValue);
+    return hiddenTagValue;
+  };
+
+  sendTimeToServer();
 });

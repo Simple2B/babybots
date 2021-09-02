@@ -1,4 +1,5 @@
 from datetime import datetime
+from flask_login import current_user
 from app.models import Schedule, Input
 from app.logger import log
 
@@ -56,7 +57,7 @@ def set_last_update():
     """Set last update in data base"""
     schedule = Schedule.query.first()
     now = datetime.now()
-    schedule.last_update = now
+    schedule.last_update = now.minute + now.hour * 60
     schedule.save()
     log(log.INFO, "Last update has been set in data base [%s]", now)
 
@@ -64,8 +65,12 @@ def set_last_update():
 def get_last_update() -> str:
     """Get last update from data base"""
     schedule = Schedule.query.first()
+    delta = current_user.delta_time_hours
+    log(log.INFO, "DELTA: [%s}", delta)
     if not schedule.last_update:
         log(log.WARNING, "No last update in data base")
         return "Undefined"
     log(log.INFO, "Get last update from data base")
-    return schedule.last_update.strftime("%H:%M:%S")
+    last_update_hours = (schedule.last_update // 60) + delta
+    last_update_minutes = schedule.last_update % 60
+    return f"{last_update_hours:02}:{last_update_minutes:02}"

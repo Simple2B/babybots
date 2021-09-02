@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, url_for, redirect, flash, request
 from flask_login import login_user, logout_user, login_required
+from datetime import datetime
+
 
 from app.models import User
 from app.forms import LoginForm, RegistrationForm
@@ -31,8 +33,10 @@ def login():
     log(log.INFO, "login")
     form = LoginForm(request.form)
     if form.validate_on_submit():
-        user = User.authenticate(form.user_id.data, form.password.data)
+        user: User = User.authenticate(form.user_id.data, form.password.data)
         if user is not None:
+            user.delta_time_hours = int(form.current_time.data) - int(datetime.now().time().hour)
+            user.save()
             login_user(user)
             flash("Login successful.", "success")
             return redirect(url_for("main.program"))
