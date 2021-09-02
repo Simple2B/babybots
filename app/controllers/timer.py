@@ -1,7 +1,7 @@
 from datetime import datetime
+from flask_login import current_user
 from app.models import Schedule, Input
 from app.logger import log
-from flask_login import current_user
 
 
 def set_running():
