@@ -1,6 +1,7 @@
 from datetime import datetime
-from app.models import Schedule, Input, User
+from app.models import Schedule, Input
 from app.logger import log
+from flask.login import current_user
 
 
 def set_running():
@@ -56,8 +57,7 @@ def set_last_update():
     """Set last update in data base"""
     schedule = Schedule.query.first()
     now = datetime.now()
-    user = User.query.first()
-    schedule.last_update = now.minute + (now.hour - user.delta_time_hours) * 60
+    schedule.last_update = now.minute + (now.hour + current_user.delta_time_hours) * 60
     schedule.save()
     log(log.INFO, "Last update has been set in data base [%s]", now)
 
