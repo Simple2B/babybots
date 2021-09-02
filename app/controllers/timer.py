@@ -66,6 +66,7 @@ def get_last_update() -> str:
     """Get last update from data base"""
     schedule = Schedule.query.first()
     delta = current_user.delta_time_hours
+    log(log.INFO, "DELTA: [%s}", delta)
     if not schedule.last_update:
         log(log.WARNING, "No last update in data base")
         return "Undefined"
