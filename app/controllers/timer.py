@@ -1,5 +1,5 @@
 from datetime import datetime
-from app.models import Schedule, Input
+from app.models import Schedule, Input, User
 from app.logger import log
 
 
@@ -56,7 +56,8 @@ def set_last_update():
     """Set last update in data base"""
     schedule = Schedule.query.first()
     now = datetime.now()
-    schedule.last_update = now
+    user = User.query.first()
+    schedule.last_update = now.minute + (now.hour - user.delta_time_hours) * 60
     schedule.save()
     log(log.INFO, "Last update has been set in data base [%s]", now)
 
@@ -68,4 +69,10 @@ def get_last_update() -> str:
         log(log.WARNING, "No last update in data base")
         return "Undefined"
     log(log.INFO, "Get last update from data base")
-    return schedule.last_update.strftime("%H:%M:%S")
+    last_update_hours = schedule.last_update // 60
+    last_update_minutes = schedule.last_update % 60
+    if len(str(last_update_minutes)) == 1:
+        last_update_minutes = '0' + str(last_update_minutes)
+    else:
+        last_update_minutes = str(last_update_minutes)
+    return str(last_update_hours) + ':' + last_update_minutes
