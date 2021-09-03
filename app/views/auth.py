@@ -35,7 +35,7 @@ def login():
     if form.validate_on_submit():
         user: User = User.authenticate(form.user_id.data, form.password.data)
         if user is not None:
-            user.delta_time_hours = int(form.current_time.data) - int(datetime.now().time().hour)
+            user.delta_time_hours = (int(form.current_time.data) - int(datetime.now().time().hour) + 24 ) % 24
             user.save()
             login_user(user)
             flash("Login successful.", "success")
