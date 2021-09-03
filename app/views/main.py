@@ -35,7 +35,7 @@ def program():
     if request.method == "GET":
         if db_launch_time:
             form.launch_time.data = time(
-                hour=db_launch_time // 60, minute=db_launch_time % 60
+                hour=(db_launch_time // 60) % 24, minute=db_launch_time % 60
             )
         form.value1.data = input1.value
         form.checkbox1.data = input1.is_locked
