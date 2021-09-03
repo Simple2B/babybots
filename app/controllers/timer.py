@@ -71,6 +71,6 @@ def get_last_update() -> str:
         log(log.WARNING, "No last update in data base")
         return "Undefined"
     log(log.INFO, "Get last update from data base")
-    last_update_hours = (schedule.last_update // 60) + delta
+    last_update_hours = (schedule.last_update // 60) % 24 + delta
     last_update_minutes = schedule.last_update % 60
     return f"{last_update_hours:02}:{last_update_minutes:02}"
