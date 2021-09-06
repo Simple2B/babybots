@@ -42,4 +42,12 @@ document.addEventListener('DOMContentLoaded', (evt) => {
   };
 
   sendTimeToServer();
+
+
 });
+
+document.getElementById('submit_reset').addEventListener('click', (e) => {
+  const time_input = document.getElementById('launch_time')
+
+  return time_input.value = ''
+})

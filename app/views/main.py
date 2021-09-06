@@ -62,6 +62,12 @@ def program():
             manual_start(form)
         elif form.submit.data:
             timer_start(form)
+        elif form.submit_reset.data:
+            schedule.is_run = False
+            schedule.is_run_now = False
+            schedule.launch_time = 0
+            db_launch_time = 0
+            schedule.save()
         else:
             log(log.ERROR, "Wrong submit type")
     return render_template(
@@ -102,7 +108,8 @@ def timer_start(form: ScheduleForm):
     input10.value = form.value10.data
     input10.is_locked = form.checkbox10.data
     schedule.launch_time = (
-        form.launch_time.data.minute + (form.launch_time.data.hour - current_user.delta_time_hours) * 60
+        form.launch_time.data.minute
+        + (form.launch_time.data.hour - current_user.delta_time_hours) * 60
     )
     schedule.save()
     input1.save()
