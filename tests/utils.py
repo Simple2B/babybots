@@ -1,4 +1,5 @@
 from app.models import User
+from config import BaseConfig as conf
 
 
 def register(username, email="username@test.com", password="password"):
@@ -7,9 +8,11 @@ def register(username, email="username@test.com", password="password"):
     return user.id
 
 
-def login(client, username, password="password"):
+def login(client, username=conf.ADMIN_USER_NAME, password=conf.ADMIN_USER_PASS):
     return client.post(
-        "/login", data=dict(user_id=username, password=password), follow_redirects=True
+        "/login",
+        data=dict(user_id=username, password=password, current_time=10),
+        follow_redirects=True,
     )
 
 

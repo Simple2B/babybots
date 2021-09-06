@@ -50,7 +50,7 @@ def test_login_and_logout(client):
     response = logout(client)
     assert b"Please log in to access this page." in response.data
     register("sam")
-    response = login(client, "sam")
+    response = login(client)
     assert b"Login successful." in response.data
     # Should successfully logout the currently logged in user.
     response = logout(client)
@@ -59,5 +59,5 @@ def test_login_and_logout(client):
     response = login(client, "sam", "wrongpassword")
     assert b"Wrong user ID or password." in response.data
     # Correct credentials should login
-    response = login(client, "sam")
+    response = login(client)
     assert b"Login successful." in response.data
