@@ -80,6 +80,15 @@ flask create-db
 ```
 
 ## Docker
+To start docker container:
+
+```bash
+sudo systemctl enable docker
+```
+
+```bash
+sudo systemctl start docker
+```
 
 To build and run docker container:
 
