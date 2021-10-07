@@ -96,6 +96,13 @@ To build and run docker container:
 docker-compose up --build -d
 ```
 
+After changing in project you need to restart docker:
+```bash
+docker-compose down
+docker-compose up --build -d
+```
+
+
 ## Crontab
 
 Crontab run script every minute
