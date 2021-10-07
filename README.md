@@ -15,7 +15,13 @@ ssh -i <<path to babybots.cer>> ec2-user@ec2-34-229-136-66.compute-1.amazonaws.c
 cd babybots
 ```
 
-4. Run next commands:
+4. Now you need to restart the server. Please use commands:
+```bash
+docker-compose down; docker-compose up --build -d
+```
+— possible in single line
+
+5. Run next commands:
 
 ```bash
 git fetch
